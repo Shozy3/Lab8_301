@@ -51,12 +51,24 @@ public class CustomListTest {
     void testDelete() {
         list = MockCityList();
         City city = new City("Regina", "Saskatchewan");
-        list.add(city);
-        assertTrue(list.hasCity(city));
+
+        // Use addCity instead of add to ensure proper list modification
+        list.addCity(city);
+
+        // Verify the city was added
+        assertTrue(list.hasCity(city), "City should be present after addition.");
+
+        // Delete the city
         list.delete(city);
-        assertFalse(list.hasCity(city));
-        assertEquals(1, list.countCities());
+
+        // Verify the city was removed
+        assertFalse(list.hasCity(city), "City should not be present after deletion.");
+
+        // Verify the count is back to 0
+        assertEquals(0, list.countCities(), "City count should be 0 after deletion.");
     }
+
+
 
 
 }
