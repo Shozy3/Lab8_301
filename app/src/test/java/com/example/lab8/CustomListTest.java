@@ -69,6 +69,31 @@ public class CustomListTest {
     }
 
 
+    @Test
+    void testCountCities() {
+        // Initialize the CustomList with an empty list
+        list = MockCityList();
+
+        // Since MockCityList initializes with an empty list, the initial count should be 0
+        assertEquals(0, list.countCities(), "Initial city count should be 0.");
+
+        // Create a new City instance
+        City city = new City("Regina", "Saskatchewan");
+
+        // Add the city to the list using the correct method
+        list.addCity(city);
+
+        // After adding one city, the count should be 1
+        assertEquals(1, list.countCities(), "City count should be 1 after adding a city.");
+
+        // Delete the city from the list
+        list.delete(city);
+
+        // After deletion, the count should return to 0
+        assertEquals(0, list.countCities(), "City count should be 0 after deleting the city.");
+    }
+
+
 
 
 }
